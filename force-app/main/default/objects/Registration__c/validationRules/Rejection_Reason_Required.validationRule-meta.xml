@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Rejection_Reason_Required</fullName>
+    <active>true</active>
+    <description>CA-04.3: rechazar exige un motivo.</description>
+    <errorConditionFormula>ISPICKVAL(Status__c, 'Rejected') &amp;&amp; ISBLANK(Rejection_Reason__c)</errorConditionFormula>
+    <errorDisplayField>Rejection_Reason__c</errorDisplayField>
+    <errorMessage>Indica el motivo del rechazo.</errorMessage>
+</ValidationRule>

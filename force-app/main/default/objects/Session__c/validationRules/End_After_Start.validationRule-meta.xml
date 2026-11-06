@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>End_After_Start</fullName>
+    <active>true</active>
+    <description>La hora de fin debe ser posterior a la de inicio.</description>
+    <errorConditionFormula>End__c &lt;= Start__c</errorConditionFormula>
+    <errorDisplayField>End__c</errorDisplayField>
+    <errorMessage>La hora de fin debe ser posterior a la hora de inicio.</errorMessage>
+</ValidationRule>

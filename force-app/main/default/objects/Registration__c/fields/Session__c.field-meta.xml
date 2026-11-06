@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Session__c</fullName>
+    <description>Sesión a la que se inscribe.</description>
+    <label>Sesión</label>
+    <referenceTo>Session__c</referenceTo>
+    <relationshipLabel>Inscripciones</relationshipLabel>
+    <relationshipName>Registrations</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    <type>MasterDetail</type>
+</CustomField>

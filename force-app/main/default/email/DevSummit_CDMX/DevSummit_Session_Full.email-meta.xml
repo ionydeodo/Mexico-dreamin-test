@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>CA-06.1. Aviso a logística. Marcadores: {{sessionName}}, {{sessionDate}}, {{room}}, {{capacity}}.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>DevSummit - Sesión llena (logística)</name>
+    <style>none</style>
+    <subject>Sesión llena: {{sessionName}} (sala {{room}})</subject>
+    <textOnly>Hola equipo de logística:
+
+La sesión {{sessionName}} ya no tiene cupos.
+Horario: {{sessionDate}} (hora de Ciudad de México)
+Sala: {{room}}
+Capacidad: {{capacity}} lugares
+
+DevSummit CDMX</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

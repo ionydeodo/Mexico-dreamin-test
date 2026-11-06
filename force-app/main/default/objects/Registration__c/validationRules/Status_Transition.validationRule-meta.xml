@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status_Transition</fullName>
+    <active>true</active>
+    <description>RN-03: solo Pendiente de aprobación puede cambiar, y solo a Confirmada o Rechazada. Confirmada y Rechazada son finales.</description>
+    <errorConditionFormula>ISCHANGED(Status__c) &amp;&amp; (
+  NOT(ISPICKVAL(PRIORVALUE(Status__c), 'Pending')) ||
+  ISPICKVAL(Status__c, 'Pending')
+)</errorConditionFormula>
+    <errorDisplayField>Status__c</errorDisplayField>
+    <errorMessage>Solo una inscripción Pendiente de aprobación puede cambiar de estado, y solo a Confirmada o Rechazada.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,24 @@
+{
+  "orgName": "DevSummit CDMX",
+  "edition": "Developer",
+  "country": "MX",
+  "language": "es_MX",
+  "features": ["EnableSetPasswordInApi", "Communities"],
+  "settings": {
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    },
+    "mobileSettings": {
+      "enableS1EncryptedStoragePref2": false
+    },
+    "communitiesSettings": {
+      "enableNetworksEnabled": true
+    },
+    "experienceBundleSettings": {
+      "enableExperienceBundleMetadata": true
+    },
+    "languageSettings": {
+      "enableTranslationWorkbench": false
+    }
+  }
+}

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>DS_Error_Already_Registered</fullName>
+        <categories>DevSummit</categories>
+        <language>es_MX</language>
+        <protected>false</protected>
+        <shortDescription>CA-02.2 - DS_Error_Already_Registered</shortDescription>
+        <value>Ya estás inscrito en esta sesión.</value>
+    </labels>
+    <labels>
+        <fullName>DS_Error_Session_Full</fullName>
+        <categories>DevSummit</categories>
+        <language>es_MX</language>
+        <protected>false</protected>
+        <shortDescription>CA-02.8 - DS_Error_Session_Full</shortDescription>
+        <value>Esta sesión ya no tiene cupos.</value>
+    </labels>
+    <labels>
+        <fullName>DS_Error_Session_Cancelled</fullName>
+        <categories>DevSummit</categories>
+        <language>es_MX</language>
+        <protected>false</protected>
+        <shortDescription>RN-04 - DS_Error_Session_Cancelled</shortDescription>
+        <value>Esta sesión fue cancelada y ya no acepta inscripciones.</value>
+    </labels>
+    <labels>
+        <fullName>DS_Error_Session_Not_Found</fullName>
+        <categories>DevSummit</categories>
+        <language>es_MX</language>
+        <protected>false</protected>
+        <shortDescription>HU-02 - DS_Error_Session_Not_Found</shortDescription>
+        <value>No encontramos la sesión seleccionada.</value>
+    </labels>
+    <labels>
+        <fullName>DS_Error_Busy</fullName>
+        <categories>DevSummit</categories>
+        <language>es_MX</language>
+        <protected>false</protected>
+        <shortDescription>RNF concurrencia - DS_Error_Busy</shortDescription>
+        <value>Hay mucha demanda en este momento. Intenta de nuevo en unos segundos.</value>
+    </labels>
+    <labels>
+        <fullName>DS_Error_Required_Fields</fullName>
+        <categories>DevSummit</categories>
+        <language>es_MX</language>
+        <protected>false</protected>
+        <shortDescription>CA-02.1 - DS_Error_Required_Fields</shortDescription>
+        <value>Nombre, email y empresa son obligatorios.</value>
+    </labels>
+    <labels>
+        <fullName>DS_Error_Invalid_Email</fullName>
+        <categories>DevSummit</categories>
+        <language>es_MX</language>
+        <protected>false</protected>
+        <shortDescription>CA-02.1 - DS_Error_Invalid_Email</shortDescription>
+        <value>Escribe un email con formato válido.</value>
+    </labels>
+    <labels>
+        <fullName>DS_Error_Too_Long</fullName>
+        <categories>DevSummit</categories>
+        <language>es_MX</language>
+        <protected>false</protected>
+        <shortDescription>CA-02.1 - DS_Error_Too_Long</shortDescription>
+        <value>Alguno de los datos es demasiado largo.</value>
+    </labels>
+    <labels>
+        <fullName>DS_Error_Registrations_Not_Found</fullName>
+        <categories>DevSummit</categories>
+        <language>es_MX</language>
+        <protected>false</protected>
+        <shortDescription>CA-03.3 - DS_Error_Registrations_Not_Found</shortDescription>
+        <value>No encontramos inscripciones con esos datos.</value>
+    </labels>
+    <labels>
+        <fullName>DS_Error_Generic</fullName>
+        <categories>DevSummit</categories>
+        <language>es_MX</language>
+        <protected>false</protected>
+        <shortDescription>Genérico - DS_Error_Generic</shortDescription>
+        <value>No pudimos completar la operación. Intenta de nuevo.</value>
+    </labels>
+    <labels>
+        <fullName>DS_Error_Code_Immutable</fullName>
+        <categories>DevSummit</categories>
+        <language>es_MX</language>
+        <protected>false</protected>
+        <shortDescription>RN-05 - DS_Error_Code_Immutable</shortDescription>
+        <value>El código de confirmación no se puede modificar.</value>
+    </labels>
+    <labels>
+        <fullName>DS_Error_Already_Accredited</fullName>
+        <categories>DevSummit</categories>
+        <language>es_MX</language>
+        <protected>false</protected>
+        <shortDescription>CA-05.4 - DS_Error_Already_Accredited</shortDescription>
+        <value>Esta inscripción ya se envió a AcrediPass y no se reenvía.</value>
+    </labels>
+</CustomLabels>

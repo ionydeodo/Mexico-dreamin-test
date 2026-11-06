@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>CA-02.6. Marcadores: {{attendeeName}}, {{confirmationCode}}, {{statusLabel}}, {{statusMessage}}, {{sessionName}}, {{sessionDate}}, {{room}}, {{speaker}}, {{track}}. Los combina DevSummitEmailService.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>DevSummit - Inscripción recibida</name>
+    <style>none</style>
+    <subject>Tu inscripción a {{sessionName}} — {{statusLabel}}</subject>
+    <textOnly>Hola {{attendeeName}}:
+
+Recibimos tu inscripción. Estado: {{statusLabel}}.
+{{statusMessage}}
+
+Sesión: {{sessionName}}
+Horario: {{sessionDate}} (hora de Ciudad de México)
+Sala: {{room}}
+Speaker: {{speaker}}
+
+Tu código de confirmación: {{confirmationCode}}
+Con tu email y este código puedes consultar tus inscripciones en el sitio.
+
+DevSummit CDMX</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

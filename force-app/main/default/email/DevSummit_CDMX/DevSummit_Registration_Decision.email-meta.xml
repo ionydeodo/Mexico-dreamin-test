@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>CA-04.4. Marcadores: {{attendeeName}}, {{decisionTitle}}, {{decisionMessage}}, {{statusLabel}}, {{confirmationCode}}, {{sessionName}}, {{sessionDate}}, {{room}}, {{speaker}}, {{track}}.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>DevSummit - Resultado de aprobación</name>
+    <style>none</style>
+    <subject>{{decisionTitle}} — {{sessionName}}</subject>
+    <textOnly>Hola {{attendeeName}}:
+
+{{decisionTitle}}
+{{decisionMessage}}
+
+Sesión: {{sessionName}}
+Horario: {{sessionDate}} (hora de Ciudad de México)
+Sala: {{room}}
+
+Estado: {{statusLabel}} · Código: {{confirmationCode}}
+
+DevSummit CDMX</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

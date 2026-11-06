@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Only_Organizers_Decide</fullName>
+    <active>true</active>
+    <description>CA-04.5 / RN-03: solo los organizadores (permiso personalizado Approve_Registrations) pueden aprobar o rechazar.</description>
+    <errorConditionFormula>ISCHANGED(Status__c) &amp;&amp; NOT($Permission.Approve_Registrations)</errorConditionFormula>
+    <errorDisplayField>Status__c</errorDisplayField>
+    <errorMessage>Solo los organizadores pueden aprobar o rechazar inscripciones.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Unique_Key__c</fullName>
+    <description>Sesión + email en minúsculas. Garantiza a nivel base de datos una sola inscripción activa por email y sesión (CA-02.2). Se limpia al rechazar. Lo mantiene el sistema.</description>
+    <label>Llave de unicidad</label>
+    <length>80</length>
+    <required>false</required>
+    <caseSensitive>false</caseSensitive>
+    <externalId>false</externalId>
+    <unique>true</unique>
+    <type>Text</type>
+</CustomField>

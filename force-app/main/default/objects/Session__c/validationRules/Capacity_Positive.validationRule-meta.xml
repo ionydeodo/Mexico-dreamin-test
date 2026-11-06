@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Capacity_Positive</fullName>
+    <active>true</active>
+    <description>La capacidad debe ser mayor a cero.</description>
+    <errorConditionFormula>Capacity__c &lt;= 0</errorConditionFormula>
+    <errorDisplayField>Capacity__c</errorDisplayField>
+    <errorMessage>La capacidad debe ser mayor a cero.</errorMessage>
+</ValidationRule>

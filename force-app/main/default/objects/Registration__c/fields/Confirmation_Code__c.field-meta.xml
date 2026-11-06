@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Confirmation_Code__c</fullName>
+    <description>Código de 6 caracteres que recibe el asistente por correo (RN-05).</description>
+    <label>Código de confirmación</label>
+    <length>6</length>
+    <required>false</required>
+    <caseSensitive>false</caseSensitive>
+    <externalId>true</externalId>
+    <unique>true</unique>
+    <type>Text</type>
+</CustomField>

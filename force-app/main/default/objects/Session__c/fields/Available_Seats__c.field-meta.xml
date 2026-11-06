@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Available_Seats__c</fullName>
+    <description>Capacidad − Confirmadas − Pendientes de aprobación (RN-01). Nunca negativo.</description>
+    <label>Cupos disponibles</label>
+    <formula>MAX(0, Capacity__c - Seats_Taken__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <precision>18</precision>
+    <scale>0</scale>
+    <type>Number</type>
+</CustomField>
