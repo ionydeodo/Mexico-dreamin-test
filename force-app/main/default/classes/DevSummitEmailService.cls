@@ -138,7 +138,10 @@ public without sharing class DevSummitEmailService {
         return result;
     }
 
-    /** RN-07: "DevSummit CDMX" &lt;no-reply@devsummit.example&gt;. */
+    /**
+     * RN-07: "DevSummit CDMX" &lt;no-reply@devsummit.example&gt;. Solo se usa una dirección de toda la organización
+     * ya verificada; mientras no lo esté, se envía con el nombre del evento y respuesta al no-reply.
+     */
     private static void applySender(Messaging.SingleEmailMessage msg) {
         DevSummit_Setting__mdt cfg = DevSummit.settings;
         if (!orgWideLookedUp) {
@@ -146,7 +149,7 @@ public without sharing class DevSummitEmailService {
             List<OrgWideEmailAddress> owas = [
                 SELECT Id
                 FROM OrgWideEmailAddress
-                WHERE Address = :cfg.Sender_Address__c
+                WHERE Address = :cfg.Sender_Address__c AND IsVerified = TRUE
                 LIMIT 1
             ];
             orgWideAddressId = owas.isEmpty() ? null : owas[0].Id;
