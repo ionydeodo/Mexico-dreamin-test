@@ -3,6 +3,15 @@
  */
 @IsTest
 public class DevSummitTestFactory {
+    /** Fija la configuración del evento para que las pruebas no dependan del Custom Metadata del org. */
+    public static void useDefaultSettings() {
+        DevSummit.settingsOverride = new DevSummit_Setting__mdt(
+            Sender_Name__c = 'DevSummit CDMX',
+            Sender_Address__c = 'no-reply@devsummit.example',
+            Logistics_Email__c = 'logistica@devsummit.example'
+        );
+    }
+
     public static Session__c session(String name, Integer capacity, Boolean sponsored) {
         Datetime start = Datetime.newInstanceGmt(2026, 11, 20, 16, 0, 0); // 10:00 CDMX
         return new Session__c(

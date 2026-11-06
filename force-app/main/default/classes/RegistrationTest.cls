@@ -123,6 +123,7 @@ private class RegistrationTest {
 
     @IsTest
     static void ca02_6_codeAndEmailSentToAttendee() {
+        DevSummitTestFactory.useDefaultSettings();
         Test.setMock(HttpCalloutMock.class, AcrediPassCalloutMock.success());
         Session__c s = DevSummitTestFactory.insertSession('Apex Cursors en la práctica', 40, false);
 

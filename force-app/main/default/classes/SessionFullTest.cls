@@ -15,6 +15,7 @@ private class SessionFullTest {
 
     @IsTest
     static void ca06_1_emailToLogisticsWhenSeatsReachZero() {
+        DevSummitTestFactory.useDefaultSettings();
         Test.setMock(HttpCalloutMock.class, AcrediPassCalloutMock.success());
         Session__c s = DevSummitTestFactory.insertSession('Taller secreto: Claude Code en vivo', 2, false);
         insert DevSummitTestFactory.registration(s.Id, 'a@example.com');
@@ -31,6 +32,7 @@ private class SessionFullTest {
 
     @IsTest
     static void ca06_2_fullThenOpenAgainAfterRejection() {
+        DevSummitTestFactory.useDefaultSettings();
         Session__c s = DevSummitTestFactory.insertSession('Diseño de sharing a escala', 1, true);
         Registration__c r = DevSummitTestFactory.registration(s.Id, 'a@example.com');
         insert r;
@@ -44,6 +46,7 @@ private class SessionFullTest {
 
     @IsTest
     static void ca06_3_oneEmailEachTimeSessionFills() {
+        DevSummitTestFactory.useDefaultSettings();
         Session__c s = DevSummitTestFactory.insertSession('Agentforce para devs', 1, true);
         Registration__c r = DevSummitTestFactory.registration(s.Id, 'a@example.com');
         insert r;
@@ -62,6 +65,7 @@ private class SessionFullTest {
 
     @IsTest
     static void statusIsDerivedFromCapacity() {
+        DevSummitTestFactory.useDefaultSettings();
         Session__c s = DevSummitTestFactory.insertSession('Data Cloud desde cero', 1, false);
         insert DevSummitTestFactory.registration(s.Id, 'a@example.com');
         Assert.areEqual(DevSummit.SESSION_FULL, [SELECT Status__c FROM Session__c].Status__c);
