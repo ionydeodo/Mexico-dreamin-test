@@ -1,0 +1,34 @@
+<template>
+    <article class={cardClass} aria-labelledby={titleId}>
+        <div class="card__top">
+            <span class="pill">{session.track}</span>
+            <template lwc:if={session.isSponsored}>
+                <span class="sponsor">Patrocinada por {session.sponsorName}</span>
+            </template>
+        </div>
+        <h2 class="card__title" id={titleId}>{session.title}</h2>
+        <dl class="card__meta">
+            <div>
+                <dt>Horario</dt>
+                <dd>{schedule}</dd>
+            </div>
+            <div>
+                <dt>Sala</dt>
+                <dd>{session.room}</dd>
+            </div>
+            <div>
+                <dt>Speaker</dt>
+                <dd>{session.speakerName}</dd>
+            </div>
+        </dl>
+        <div class="card__footer">
+            <template lwc:if={session.isFull}>
+                <span class="seats seats_full">Llena</span>
+            </template>
+            <template lwc:else>
+                <span class={seatsClass}>{seatsText}</span>
+                <button type="button" class="btn" onclick={handleRegister} aria-label={buttonLabel}>Inscribirme</button>
+            </template>
+        </div>
+    </article>
+</template>

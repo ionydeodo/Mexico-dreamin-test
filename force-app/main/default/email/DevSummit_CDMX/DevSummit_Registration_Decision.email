@@ -18,7 +18,7 @@
 <tr><td style="padding:12px 16px;">
 <div style="font-size:17px;font-weight:bold;color:#c2185b;">{{sessionName}}</div>
 <div style="margin-top:4px;">🗓️ {{sessionDate}}</div>
-<div>📍 Sala {{room}}</div>
+<div>📍 {{room}}</div>
 <div>🎤 {{speaker}} · {{track}}</div>
 </td></tr></table>
 <p style="font-size:13px;color:#6b6472;">Estado de tu inscripción: {{statusLabel}} · Código: {{confirmationCode}}</p>

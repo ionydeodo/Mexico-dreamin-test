@@ -1,0 +1,123 @@
+:host {
+    display: block;
+    height: 100%;
+}
+
+.card {
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: var(--ds-card, #fff);
+    border: 1px solid var(--ds-line, #e6dfd6);
+    border-left: 5px solid var(--ds-teal, #00796b);
+    border-radius: var(--ds-radius, 14px);
+    padding: 16px;
+}
+
+.card_full {
+    border-left-color: #9e9e9e;
+}
+
+.card__top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.pill {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ds-teal, #00796b);
+    background: #e0f2ef;
+    border-radius: 999px;
+    padding: 3px 10px;
+}
+
+.sponsor {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6d4c00;
+    background: #fff4d6;
+    border-radius: 999px;
+    padding: 3px 10px;
+}
+
+.card__title {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.3;
+}
+
+.card__meta {
+    margin: 0;
+    display: grid;
+    gap: 2px;
+    font-size: 14px;
+}
+
+.card__meta div {
+    display: flex;
+    gap: 6px;
+}
+
+.card__meta dt {
+    color: var(--ds-muted, #5f5866);
+    min-width: 64px;
+}
+
+.card__meta dd {
+    margin: 0;
+    font-weight: 500;
+}
+
+.card__footer {
+    margin-top: auto;
+    padding-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.seats {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ds-teal, #00796b);
+}
+
+.seats_few {
+    color: #b45309;
+}
+
+.seats_full {
+    color: #fff;
+    background: #616161;
+    border-radius: 999px;
+    padding: 4px 12px;
+}
+
+.btn {
+    min-height: 44px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 10px;
+    background: var(--ds-magenta, #c2185b);
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--ds-magenta-dark, #8e0f43);
+}
+
+.btn:focus-visible {
+    outline: 3px solid var(--ds-yellow, #f9a825);
+    outline-offset: 2px;
+}

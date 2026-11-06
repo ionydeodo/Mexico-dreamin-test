@@ -1,0 +1,75 @@
+<template>
+    <div class="backdrop" onclick={handleBackdrop}></div>
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="ds-dialog-title" onkeydown={handleKeydown}>
+        <header class="dialog__header">
+            <div>
+                <p class="dialog__eyebrow">Inscripción</p>
+                <h2 class="dialog__title" id="ds-dialog-title">{session.title}</h2>
+                <p class="dialog__schedule">{schedule} · {session.room}</p>
+            </div>
+            <button type="button" class="close" aria-label="Cerrar" onclick={close}>✕</button>
+        </header>
+
+        <template lwc:if={result}>
+            <div class="success" role="status">
+                <p class="success__icon" aria-hidden="true">{successIcon}</p>
+                <h3 class="success__title">{successTitle}</h3>
+                <p>{successMessage}</p>
+                <p class="success__mail">
+                    Revisa tu correo <strong>{result.attendeeEmail}</strong>: te enviamos tu código de confirmación
+                    y los datos de la sesión.
+                </p>
+                <button type="button" class="btn" onclick={close}>Listo</button>
+            </div>
+        </template>
+        <template lwc:else>
+            <form class="form" novalidate onsubmit={handleSubmit}>
+                <template lwc:if={session.isSponsored}>
+                    <p class="note">
+                        Sesión patrocinada por {session.sponsorName}: el equipo organizador aprobará tu inscripción y te
+                        avisaremos por correo.
+                    </p>
+                </template>
+
+                <div class="field">
+                    <label for="ds-name">Nombre completo <span class="req" aria-hidden="true">*</span></label>
+                    <input id="ds-name" name="fullName" class="input" type="text" autocomplete="name" maxlength="120"
+                        required aria-required="true" aria-invalid={nameInvalid} aria-describedby="ds-name-error"
+                        value={fullName} oninput={handleInput} />
+                    <p class="error" id="ds-name-error">{errors.fullName}</p>
+                </div>
+
+                <div class="field">
+                    <label for="ds-email">Email <span class="req" aria-hidden="true">*</span></label>
+                    <input id="ds-email" name="email" class="input" type="email" inputmode="email" autocomplete="email"
+                        maxlength="80" required aria-required="true" aria-invalid={emailInvalid}
+                        aria-describedby="ds-email-error" value={email} oninput={handleInput} />
+                    <p class="error" id="ds-email-error">{errors.email}</p>
+                </div>
+
+                <div class="field">
+                    <label for="ds-company">Empresa <span class="req" aria-hidden="true">*</span></label>
+                    <input id="ds-company" name="company" class="input" type="text" autocomplete="organization"
+                        maxlength="120" required aria-required="true" aria-invalid={companyInvalid}
+                        aria-describedby="ds-company-error" value={company} oninput={handleInput} />
+                    <p class="error" id="ds-company-error">{errors.company}</p>
+                </div>
+
+                <div class="field">
+                    <label for="ds-title">Cargo <span class="optional">(opcional)</span></label>
+                    <input id="ds-title" name="jobTitle" class="input" type="text" autocomplete="organization-title"
+                        maxlength="120" value={jobTitle} oninput={handleInput} />
+                </div>
+
+                <template lwc:if={serverError}>
+                    <div class={serverErrorClass} role="alert">{serverError}</div>
+                </template>
+
+                <div class="actions">
+                    <button type="button" class="btn btn_secondary" onclick={close}>Cancelar</button>
+                    <button type="submit" class="btn" disabled={submitDisabled}>{submitLabel}</button>
+                </div>
+            </form>
+        </template>
+    </div>
+</template>

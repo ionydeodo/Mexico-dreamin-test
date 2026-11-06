@@ -17,7 +17,7 @@
 <tr><td style="padding:12px 16px;">
 <div style="font-size:17px;font-weight:bold;color:#c2185b;">{{sessionName}}</div>
 <div style="margin-top:4px;">🗓️ {{sessionDate}}</div>
-<div>📍 Sala {{room}}</div>
+<div>📍 {{room}}</div>
 <div>👥 Capacidad: {{capacity}} lugares</div>
 </td></tr></table>
 <p>Por favor preparen la sala para el aforo completo.</p>

@@ -1,0 +1,110 @@
+{
+  "records": [
+    {
+      "attributes": {
+        "type": "Session__c",
+        "referenceId": "Session1"
+      },
+      "Name": "Taller secreto: Claude Code en vivo",
+      "Track__c": "Apex",
+      "Capacity__c": 3,
+      "Is_Sponsored__c": false,
+      "Start__c": "2026-11-20T16:00:00.000Z",
+      "End__c": "2026-11-20T17:30:00.000Z",
+      "Room__c": "Sala Teotihuacán",
+      "Speaker_Name__c": "Laura Méndez",
+      "Speaker_Email__c": "laura.mendez@speakers.example",
+      "Speaker_Phone__c": "+52 55 0000 0001",
+      "Status__c": "Open"
+    },
+    {
+      "attributes": {
+        "type": "Session__c",
+        "referenceId": "Session2"
+      },
+      "Name": "Apex Cursors en la práctica",
+      "Track__c": "Apex",
+      "Capacity__c": 40,
+      "Is_Sponsored__c": false,
+      "Start__c": "2026-11-20T16:00:00.000Z",
+      "End__c": "2026-11-20T17:00:00.000Z",
+      "Room__c": "Sala Chapultepec",
+      "Speaker_Name__c": "Diego Ramírez",
+      "Speaker_Email__c": "diego.ramirez@speakers.example",
+      "Speaker_Phone__c": "+52 55 0000 0002",
+      "Status__c": "Open"
+    },
+    {
+      "attributes": {
+        "type": "Session__c",
+        "referenceId": "Session3"
+      },
+      "Name": "LWC con estado, sin dolor",
+      "Track__c": "LWC",
+      "Capacity__c": 30,
+      "Is_Sponsored__c": false,
+      "Start__c": "2026-11-20T17:30:00.000Z",
+      "End__c": "2026-11-20T18:30:00.000Z",
+      "Room__c": "Sala Coyoacán",
+      "Speaker_Name__c": "Sofía Herrera",
+      "Speaker_Email__c": "sofia.herrera@speakers.example",
+      "Speaker_Phone__c": "+52 55 0000 0003",
+      "Status__c": "Open"
+    },
+    {
+      "attributes": {
+        "type": "Session__c",
+        "referenceId": "Session4"
+      },
+      "Name": "Agentforce para devs",
+      "Track__c": "Agentforce",
+      "Capacity__c": 25,
+      "Is_Sponsored__c": true,
+      "Start__c": "2026-11-20T18:00:00.000Z",
+      "End__c": "2026-11-20T19:30:00.000Z",
+      "Room__c": "Sala Xochimilco",
+      "Speaker_Name__c": "Carlos Ibarra",
+      "Speaker_Email__c": "carlos.ibarra@speakers.example",
+      "Speaker_Phone__c": "+52 55 0000 0004",
+      "Status__c": "Open",
+      "Sponsor_Name__c": "Nube Andina",
+      "Sponsor_Fee__c": 45000
+    },
+    {
+      "attributes": {
+        "type": "Session__c",
+        "referenceId": "Session5"
+      },
+      "Name": "Data Cloud desde cero",
+      "Track__c": "Data Cloud",
+      "Capacity__c": 35,
+      "Is_Sponsored__c": false,
+      "Start__c": "2026-11-20T19:00:00.000Z",
+      "End__c": "2026-11-20T20:00:00.000Z",
+      "Room__c": "Sala Chapultepec",
+      "Speaker_Name__c": "Mariana Torres",
+      "Speaker_Email__c": "mariana.torres@speakers.example",
+      "Speaker_Phone__c": "+52 55 0000 0005",
+      "Status__c": "Open"
+    },
+    {
+      "attributes": {
+        "type": "Session__c",
+        "referenceId": "Session6"
+      },
+      "Name": "Diseño de sharing a escala",
+      "Track__c": "Arquitectura",
+      "Capacity__c": 20,
+      "Is_Sponsored__c": true,
+      "Start__c": "2026-11-20T20:00:00.000Z",
+      "End__c": "2026-11-20T21:30:00.000Z",
+      "Room__c": "Sala Coyoacán",
+      "Speaker_Name__c": "Andrés Salgado",
+      "Speaker_Email__c": "andres.salgado@speakers.example",
+      "Speaker_Phone__c": "+52 55 0000 0006",
+      "Status__c": "Open",
+      "Sponsor_Name__c": "Cumbre Consulting",
+      "Sponsor_Fee__c": 30000
+    }
+  ]
+}

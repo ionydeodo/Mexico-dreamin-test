@@ -3,6 +3,10 @@
     {
       "path": "force-app",
       "default": true
+    },
+    {
+      "path": "site",
+      "default": false
     }
   ],
   "name": "mexico-dreamin-test",

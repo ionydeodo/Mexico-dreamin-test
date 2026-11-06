@@ -1,0 +1,143 @@
+:host {
+    display: block;
+}
+
+.mine {
+    background: #fff;
+    border: 1px solid var(--ds-line, #e6dfd6);
+    border-radius: var(--ds-radius, 14px);
+    padding: 16px;
+}
+
+.mine__title {
+    margin: 0 0 4px;
+    font-size: 20px;
+}
+
+.mine__hint {
+    margin: 0 0 16px;
+    font-size: 14px;
+    color: var(--ds-muted, #5f5866);
+}
+
+.mine__form {
+    display: grid;
+    gap: 12px;
+}
+
+@media (min-width: 720px) {
+    .mine__form {
+        grid-template-columns: 2fr 1fr auto;
+        align-items: end;
+    }
+}
+
+.field label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.input {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 48px;
+    padding: 10px 14px;
+    font: inherit;
+    font-size: 16px;
+    border: 1px solid #bdb4a8;
+    border-radius: 10px;
+    color: var(--ds-ink, #1f1b24);
+    background: #fff;
+}
+
+.input_code {
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.btn {
+    min-height: 48px;
+    padding: 0 22px;
+    border: none;
+    border-radius: 10px;
+    background: var(--ds-magenta, #c2185b);
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn[disabled] {
+    opacity: 0.6;
+}
+
+.btn:focus-visible,
+.input:focus-visible {
+    outline: 3px solid var(--ds-yellow, #f9a825);
+    outline-offset: 2px;
+}
+
+.alert {
+    margin-top: 16px;
+    border-radius: 10px;
+    padding: 12px;
+    background: #fdecef;
+    color: #8a1129;
+    font-weight: 600;
+}
+
+.list {
+    list-style: none;
+    margin: 16px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid var(--ds-line, #e6dfd6);
+    border-radius: 10px;
+}
+
+.item__title {
+    margin: 0;
+    font-weight: 700;
+}
+
+.item__meta {
+    margin: 2px 0 0;
+    font-size: 13px;
+    color: var(--ds-muted, #5f5866);
+}
+
+.badge {
+    flex: none;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 999px;
+    padding: 4px 10px;
+    background: #eee;
+}
+
+.badge_ok {
+    background: #e0f2ef;
+    color: #00544a;
+}
+
+.badge_pending {
+    background: #fff4d6;
+    color: #6d4c00;
+}
+
+.badge_rejected {
+    background: #fdecef;
+    color: #8a1129;
+}

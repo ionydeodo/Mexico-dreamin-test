@@ -1,0 +1,247 @@
+:host {
+    --ds-magenta: #c2185b;
+    --ds-magenta-dark: #8e0f43;
+    --ds-teal: #00796b;
+    --ds-yellow: #f9a825;
+    --ds-ink: #1f1b24;
+    --ds-muted: #5f5866;
+    --ds-line: #e6dfd6;
+    --ds-bg: #f7f4ef;
+    --ds-card: #ffffff;
+    --ds-radius: 14px;
+    display: block;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ds-ink);
+}
+
+.ds {
+    background: var(--ds-bg);
+    min-height: 100vh;
+}
+
+.ds-hero {
+    background: var(--ds-magenta);
+    color: #fff;
+    padding: 28px 16px 24px;
+}
+
+.ds-eyebrow {
+    margin: 0;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.85;
+}
+
+.ds-title {
+    margin: 4px 0 8px;
+    font-size: 30px;
+    line-height: 1.1;
+    font-weight: 800;
+}
+
+.ds-subtitle {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.4;
+    max-width: 36rem;
+}
+
+.ds-stripe {
+    height: 6px;
+    background: linear-gradient(90deg, var(--ds-teal), var(--ds-yellow), var(--ds-magenta));
+}
+
+.ds-tabs {
+    display: flex;
+    gap: 4px;
+    padding: 12px 16px 0;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.ds-tab {
+    flex: 1;
+    min-height: 44px;
+    border: none;
+    border-bottom: 3px solid transparent;
+    background: transparent;
+    font: inherit;
+    font-weight: 600;
+    color: var(--ds-muted);
+    cursor: pointer;
+}
+
+.ds-tab_active {
+    color: var(--ds-magenta);
+    border-bottom-color: var(--ds-magenta);
+}
+
+.ds-tab:focus-visible,
+.ds-chip:focus-visible,
+.ds-link:focus-visible,
+.ds-input:focus-visible {
+    outline: 3px solid var(--ds-yellow);
+    outline-offset: 2px;
+}
+
+.ds-main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.ds-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.ds-input {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 48px;
+    padding: 10px 14px;
+    font: inherit;
+    font-size: 16px; /* evita el zoom automático en iOS */
+    border: 1px solid #bdb4a8;
+    border-radius: 10px;
+    background: #fff;
+    color: var(--ds-ink);
+}
+
+.ds-chips {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 14px 0 4px;
+    scrollbar-width: none;
+}
+
+.ds-chip {
+    flex: none;
+    min-height: 40px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid var(--ds-line);
+    background: #fff;
+    font: inherit;
+    font-size: 14px;
+    color: var(--ds-ink);
+    cursor: pointer;
+}
+
+.ds-chip_active {
+    background: var(--ds-teal);
+    border-color: var(--ds-teal);
+    color: #fff;
+    font-weight: 600;
+}
+
+.ds-status {
+    margin: 8px 0 12px;
+    font-size: 13px;
+    color: var(--ds-muted);
+    min-height: 1em;
+}
+
+.ds-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+}
+
+@media (min-width: 720px) {
+    .ds-hero {
+        padding: 40px 32px 32px;
+    }
+    .ds-title {
+        font-size: 40px;
+    }
+    .ds-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .ds-tabs {
+        justify-content: flex-start;
+    }
+    .ds-tab {
+        flex: none;
+        padding: 0 20px;
+    }
+}
+
+.ds-alert {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.ds-alert_error {
+    background: #fdecef;
+    color: #8a1129;
+}
+
+.ds-link {
+    border: none;
+    background: none;
+    padding: 4px;
+    font: inherit;
+    font-weight: 600;
+    color: var(--ds-magenta-dark);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.ds-skeletons {
+    display: grid;
+    gap: 12px;
+}
+
+.ds-skeleton {
+    height: 150px;
+    border-radius: var(--ds-radius);
+    background: linear-gradient(90deg, #ece6dd 25%, #f5f1ea 50%, #ece6dd 75%);
+    background-size: 200% 100%;
+    animation: ds-shimmer 1.2s infinite linear;
+}
+
+@keyframes ds-shimmer {
+    from {
+        background-position: 200% 0;
+    }
+    to {
+        background-position: -200% 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ds-skeleton {
+        animation: none;
+    }
+}
+
+.ds-empty {
+    text-align: center;
+    padding: 32px 16px;
+    background: #fff;
+    border-radius: var(--ds-radius);
+}
+
+.ds-empty__title {
+    margin: 0 0 8px;
+    font-weight: 600;
+}
+
+.ds-footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--ds-muted);
+    padding: 24px 16px 32px;
+}

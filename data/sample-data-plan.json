@@ -1,0 +1,10 @@
+[
+  {
+    "sobject": "Session__c",
+    "saveRefs": true,
+    "resolveRefs": false,
+    "files": [
+      "Session__c.json"
+    ]
+  }
+]

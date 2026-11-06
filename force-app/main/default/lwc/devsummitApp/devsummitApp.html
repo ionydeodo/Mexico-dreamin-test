@@ -1,0 +1,114 @@
+<template>
+    <div class="ds">
+        <header class="ds-hero">
+            <p class="ds-eyebrow">Comunidad Salesforce · Ciudad de México</p>
+            <h1 class="ds-title">DevSummit CDMX</h1>
+            <p class="ds-subtitle">Encuentra tu taller y aparta tu lugar en menos de un minuto. No necesitas cuenta.</p>
+        </header>
+        <div class="ds-stripe" aria-hidden="true"></div>
+
+        <nav class="ds-tabs" role="tablist" aria-label="Secciones">
+            <button
+                type="button"
+                role="tab"
+                class={catalogTabClass}
+                aria-selected={isCatalogSelected}
+                data-tab="catalog"
+                onclick={handleTab}
+            >
+                Sesiones
+            </button>
+            <button
+                type="button"
+                role="tab"
+                class={mineTabClass}
+                aria-selected={isMineSelected}
+                data-tab="mine"
+                onclick={handleTab}
+            >
+                Mis inscripciones
+            </button>
+        </nav>
+
+        <main class="ds-main">
+            <template lwc:if={isCatalogSelected}>
+                <section aria-label="Catálogo de sesiones">
+                    <div class="ds-search">
+                        <label class="ds-label" for="ds-search-input">Buscar por título o speaker</label>
+                        <input
+                            id="ds-search-input"
+                            class="ds-input"
+                            type="search"
+                            inputmode="search"
+                            autocomplete="off"
+                            maxlength="80"
+                            placeholder="Ej. Apex, Laura…"
+                            value={searchTerm}
+                            oninput={handleSearchInput}
+                        />
+                    </div>
+
+                    <div class="ds-chips" role="group" aria-label="Filtrar por track">
+                        <template for:each={trackChips} for:item="chip">
+                            <button
+                                key={chip.value}
+                                type="button"
+                                class={chip.cssClass}
+                                aria-pressed={chip.pressed}
+                                data-value={chip.value}
+                                onclick={handleTrack}
+                            >
+                                {chip.label}
+                            </button>
+                        </template>
+                    </div>
+
+                    <p class="ds-status" aria-live="polite">{statusText}</p>
+
+                    <template lwc:if={error}>
+                        <div class="ds-alert ds-alert_error" role="alert">
+                            <span>{error}</span>
+                            <button type="button" class="ds-link" onclick={loadSessions}>Reintentar</button>
+                        </div>
+                    </template>
+
+                    <template lwc:if={loading}>
+                        <div class="ds-skeletons" aria-hidden="true">
+                            <div class="ds-skeleton"></div>
+                            <div class="ds-skeleton"></div>
+                            <div class="ds-skeleton"></div>
+                        </div>
+                    </template>
+                    <template lwc:elseif={hasSessions}>
+                        <ul class="ds-list">
+                            <template for:each={sessions} for:item="session">
+                                <li key={session.id}>
+                                    <c-ds-session-card session={session} onregister={handleRegister}></c-ds-session-card>
+                                </li>
+                            </template>
+                        </ul>
+                    </template>
+                    <template lwc:elseif={showEmpty}>
+                        <div class="ds-empty">
+                            <p class="ds-empty__title">No encontramos sesiones con esos filtros.</p>
+                            <button type="button" class="ds-link" onclick={clearFilters}>Ver todas las sesiones</button>
+                        </div>
+                    </template>
+                </section>
+            </template>
+            <template lwc:else>
+                <c-ds-my-registrations></c-ds-my-registrations>
+            </template>
+        </main>
+
+        <footer class="ds-footer">Todos los horarios están en hora de Ciudad de México.</footer>
+
+        <template lwc:if={selectedSession}>
+            <c-ds-registration-form
+                session={selectedSession}
+                onclose={handleCloseForm}
+                onchanged={handleRegistrationChanged}
+            ></c-ds-registration-form>
+        </template>
+    </div>
+</template>

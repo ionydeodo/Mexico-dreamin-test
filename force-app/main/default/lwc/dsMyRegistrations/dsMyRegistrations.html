@@ -1,0 +1,41 @@
+<template>
+    <section class="mine" aria-labelledby="ds-mine-title">
+        <h2 class="mine__title" id="ds-mine-title">Consulta tus inscripciones</h2>
+        <p class="mine__hint">Usa tu email y el código de cualquiera de tus inscripciones (te llegó por correo).</p>
+
+        <form class="mine__form" novalidate onsubmit={handleSubmit}>
+            <div class="field">
+                <label for="ds-mine-email">Email</label>
+                <input id="ds-mine-email" name="email" class="input" type="email" inputmode="email"
+                    autocomplete="email" maxlength="80" value={email} oninput={handleInput} />
+            </div>
+            <div class="field">
+                <label for="ds-mine-code">Código de confirmación</label>
+                <input id="ds-mine-code" name="code" class="input input_code" type="text" autocomplete="off"
+                    autocapitalize="characters" spellcheck="false" maxlength="6" placeholder="ABC234"
+                    value={code} oninput={handleInput} />
+            </div>
+            <button type="submit" class="btn" disabled={loading}>{buttonLabel}</button>
+        </form>
+
+        <div aria-live="polite">
+            <template lwc:if={message}>
+                <div class="alert" role="alert">{message}</div>
+            </template>
+
+            <template lwc:if={hasRegistrations}>
+                <ul class="list">
+                    <template for:each={registrations} for:item="r">
+                        <li key={r.key} class="item">
+                            <div class="item__main">
+                                <p class="item__title">{r.sessionTitle}</p>
+                                <p class="item__meta">{r.schedule} · {r.room}</p>
+                            </div>
+                            <span class={r.badgeClass}>{r.statusLabel}</span>
+                        </li>
+                    </template>
+                </ul>
+            </template>
+        </div>
+    </section>
+</template>

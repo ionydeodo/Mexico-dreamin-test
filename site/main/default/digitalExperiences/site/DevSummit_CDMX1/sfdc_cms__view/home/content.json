@@ -1,0 +1,78 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Inicio",
+  "contentBody": {
+    "component": {
+      "children": [
+        {
+          "children": [
+            {
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "layoutDirectionDesktop": "row",
+                "layoutDirectionMobile": "column",
+                "layoutDirectionTablet": "column",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"7eca6bdd-b183-4754-ae53-5d15119657ac\",\"columns\":[{\"UUID\":\"48429b6d-0b10-4357-90b5-c2a3bcc564ab\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":null}]}",
+                "sectionMinHeight": "",
+                "sectionVerticalAlign": "flex-start"
+              },
+              "children": [
+                {
+                  "children": [
+                    {
+                      "attributes": {},
+                      "definition": "c:devsummitApp",
+                      "id": "3f6b8a52-1c2e-4f7d-9a41-6d2b8e0c9f11",
+                      "type": "component"
+                    }
+                  ],
+                  "id": "48429b6d-0b10-4357-90b5-c2a3bcc564ab",
+                  "name": "col1",
+                  "title": "Columna 1",
+                  "type": "region"
+                }
+              ],
+              "definition": "community_layout:section",
+              "id": "7eca6bdd-b183-4754-ae53-5d15119657ac",
+              "type": "component"
+            }
+          ],
+          "id": "6c0be385-6c9d-47ed-824d-5ea8a3d48054",
+          "name": "content",
+          "title": "Contenido",
+          "type": "region"
+        },
+        {
+          "children": [
+            {
+              "attributes": {
+                "customHeadTags": "",
+                "description": "Busca talleres de DevSummit CDMX e inscríbete en menos de un minuto, sin crear cuenta.",
+                "pageTitle": "Talleres DevSummit CDMX",
+                "recordId": "{!recordId}"
+              },
+              "definition": "community_builder:seoAssistant",
+              "id": "23a33f11-c98d-4784-9b6e-4c70f5fd37c0",
+              "type": "component"
+            }
+          ],
+          "id": "706315c3-900b-4416-9e28-440e14cdfbcb",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "type": "region"
+        }
+      ],
+      "definition": "community_layout:sldsFlexibleLayout",
+      "id": "d4ed5ca4-6822-4e90-b5fd-4b25f5fd1e95",
+      "type": "component"
+    },
+    "dataProviders": [],
+    "themeLayoutType": "Inner",
+    "viewType": "home"
+  },
+  "urlName": "home"
+}
