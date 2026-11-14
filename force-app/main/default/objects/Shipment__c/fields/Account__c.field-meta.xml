@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account__c</fullName>
+    <description>Empresa remitente (información interna, RN-03).</description>
+    <label>Empresa remitente</label>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Envíos</relationshipLabel>
+    <relationshipName>Shipments</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+    <trackHistory>false</trackHistory>
+</CustomField>

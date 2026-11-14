@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Permite enviar actualizaciones de estado de envíos por el API de EntregaYa (RN-04). Solo para el usuario de integración de EntregaYa.</description>
+    <isLicensed>false</isLicensed>
+    <label>Actualizar estados desde EntregaYa</label>
+</CustomPermission>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Original_Estimated_Delivery__c</fullName>
+    <description>Fecha estimada antes de la primera reprogramación; base del límite de 7 días (CA-003.2).</description>
+    <label>Fecha estimada original</label>
+    <required>false</required>
+    <type>Date</type>
+    <trackHistory>false</trackHistory>
+</CustomField>

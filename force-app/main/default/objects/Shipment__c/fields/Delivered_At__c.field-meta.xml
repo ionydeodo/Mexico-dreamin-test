@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delivered_At__c</fullName>
+    <description>Momento de la entrega.</description>
+    <label>Entregado el</label>
+    <required>false</required>
+    <type>DateTime</type>
+    <trackHistory>false</trackHistory>
+</CustomField>

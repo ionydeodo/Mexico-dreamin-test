@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <classAccesses>
+        <apexClass>ShipmentTrackingController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <description>Usuario invitado del sitio de rastreo. Sin acceso a objetos: todo pasa por ShipmentTrackingController, que aplica RN-01, RN-02 y RN-03. Incluye el principal de EntregaYa para descargar comprobantes.</description>
+    <externalCredentialPrincipalAccesses>
+        <enabled>true</enabled>
+        <externalCredentialPrincipal>EntregaYa-EntregaYaApi</externalCredentialPrincipal>
+    </externalCredentialPrincipalAccesses>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>RutaCargo - Sitio público (invitado)</label>
+</PermissionSet>

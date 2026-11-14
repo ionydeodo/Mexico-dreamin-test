@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <classAccesses>
+        <apexClass>EntregaYaStatusResource</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>EntregaYa_Status_Update</name>
+    </customPermissions>
+    <description>Usuario de integración de EntregaYa (OAuth 2.0 client credentials). Solo puede llamar al endpoint de estados (RN-04).</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>RutaCargo - Integración EntregaYa</label>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ApiEnabled</name>
+    </userPermissions>
+</PermissionSet>

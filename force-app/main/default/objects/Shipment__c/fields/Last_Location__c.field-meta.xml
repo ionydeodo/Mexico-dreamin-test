@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Location__c</fullName>
+    <description>Última ubicación reportada.</description>
+    <label>Última ubicación</label>
+    <length>255</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+    <trackHistory>false</trackHistory>
+</CustomField>

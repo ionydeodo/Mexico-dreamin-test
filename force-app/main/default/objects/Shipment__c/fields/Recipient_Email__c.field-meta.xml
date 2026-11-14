@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Recipient_Email__c</fullName>
+    <description>Correo del destinatario (dato personal, RN-02).</description>
+    <label>Correo del destinatario</label>
+    <required>false</required>
+    <type>Email</type>
+    <unique>false</unique>
+    <trackHistory>false</trackHistory>
+</CustomField>

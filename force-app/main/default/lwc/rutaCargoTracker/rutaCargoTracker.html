@@ -1,0 +1,234 @@
+<template>
+    <div class="tracker">
+        <div class="download-anchor"></div>
+
+        <!-- ============================== Búsqueda y resultados (REQ-001) -->
+        <template lwc:if={showSearch}>
+            <header class="hero">
+                <h1 class="title">Rastrea tu envío</h1>
+                <p class="subtitle">Consulta dónde está tu paquete sin crear cuenta.</p>
+            </header>
+
+            <section class="card">
+                <lightning-radio-group
+                    name="mode"
+                    label="Buscar por"
+                    options={modeOptions}
+                    value={mode}
+                    type="button"
+                    onchange={handleModeChange}
+                    class="mode"
+                ></lightning-radio-group>
+
+                <lightning-textarea
+                    label={inputLabel}
+                    placeholder={placeholder}
+                    value={rawValues}
+                    onchange={handleValuesChange}
+                    onkeydown={handleKeyDown}
+                    field-level-help="Hasta 10, separados por coma o en líneas distintas."
+                    class="values"
+                ></lightning-textarea>
+                <div class="search-row">
+                    <span class={counterClass} aria-live="polite">{counterText}</span>
+                    <lightning-button
+                        variant="brand"
+                        label="Rastrear"
+                        onclick={handleSearch}
+                        disabled={searchDisabled}
+                        class="search-button"
+                    ></lightning-button>
+                </div>
+                <template lwc:if={searching}>
+                    <lightning-spinner alternative-text="Buscando" size="small"></lightning-spinner>
+                </template>
+                <template lwc:if={searchError}>
+                    <p class="message message_error" role="alert">{searchError}</p>
+                </template>
+            </section>
+
+            <template lwc:if={hasResults}>
+                <section class="results" aria-label="Resultados">
+                    <div class="results-header">
+                        <p class="summary">{resultSummary}</p>
+                        <lightning-combobox
+                            label="Ordenar por"
+                            options={sortOptions}
+                            value={sortBy}
+                            onchange={handleSortChange}
+                            class="sort"
+                        ></lightning-combobox>
+                    </div>
+
+                    <template for:each={viewResults} for:item="r">
+                        <article key={r.key} class="card result">
+                            <template lwc:if={r.found}>
+                                <div class="result-top">
+                                    <span class="tracking">{r.trackingNumber}</span>
+                                    <span class={r.statusClass}>{r.status}</span>
+                                </div>
+                                <p class="route">{r.originCity} → {r.destinationCity}</p>
+                                <dl class="facts">
+                                    <div>
+                                        <dt>Llega</dt>
+                                        <dd class="strong">{r.estimatedLabel}</dd>
+                                    </div>
+                                    <div>
+                                        <dt>Última ubicación</dt>
+                                        <dd>{r.lastLocation}</dd>
+                                    </div>
+                                    <div>
+                                        <dt>Actualizado</dt>
+                                        <dd>{r.lastUpdateLabel}</dd>
+                                    </div>
+                                </dl>
+
+                                <template lwc:if={r.isOpen}>
+                                    <form class="verify" data-tracking={r.trackingNumber} onsubmit={handleVerify}>
+                                        <lightning-input
+                                            label="Código postal de destino"
+                                            value={postalCode}
+                                            onchange={handlePostalCodeChange}
+                                            autocomplete="postal-code"
+                                            max-length="10"
+                                        ></lightning-input>
+                                        <template lwc:if={verifyError}>
+                                            <p class="message message_error" role="alert">{verifyError}</p>
+                                        </template>
+                                        <div class="actions">
+                                            <lightning-button
+                                                label="Cancelar"
+                                                onclick={handleCancelVerification}
+                                            ></lightning-button>
+                                            <lightning-button
+                                                variant="brand"
+                                                type="submit"
+                                                label="Ver detalle"
+                                                disabled={verifying}
+                                            ></lightning-button>
+                                        </div>
+                                    </form>
+                                </template>
+                                <template lwc:else>
+                                    <button class="link-button" data-key={r.key} onclick={handleOpenVerification}>
+                                        Soy el destinatario: ver detalle de entrega
+                                    </button>
+                                </template>
+                            </template>
+                            <template lwc:else>
+                                <div class="result-top">
+                                    <span class="tracking">{r.query}</span>
+                                    <span class="status status_missing">No encontrado</span>
+                                </div>
+                            </template>
+                        </article>
+                    </template>
+                </section>
+            </template>
+        </template>
+
+        <!-- ============================== Detalle de entrega (REQ-002 / REQ-003) -->
+        <template lwc:if={detail}>
+            <button class="link-button back" onclick={handleBack}>← Volver a los resultados</button>
+
+            <section class="card">
+                <div class="result-top">
+                    <span class="tracking">{detail.trackingNumber}</span>
+                    <span class={detailStatusClass}>{detail.status}</span>
+                </div>
+                <dl class="facts facts_stacked">
+                    <div>
+                        <dt>Destinatario</dt>
+                        <dd>{detail.recipientName}</dd>
+                    </div>
+                    <div>
+                        <dt>Dirección de entrega</dt>
+                        <dd class="multiline">{detail.recipientAddress}</dd>
+                    </div>
+                    <div>
+                        <dt>Teléfono de contacto</dt>
+                        <dd>{detail.recipientPhone}</dd>
+                    </div>
+                    <div>
+                        <dt>Fecha estimada</dt>
+                        <dd class="strong">{detailEstimatedLabel}</dd>
+                    </div>
+                    <div>
+                        <dt>Instrucciones de entrega</dt>
+                        <dd class="multiline">{detail.deliveryInstructions}</dd>
+                    </div>
+                    <template lwc:if={detail.deliveredAt}>
+                        <div>
+                            <dt>Entregado el</dt>
+                            <dd>{detail.deliveredAt}</dd>
+                        </div>
+                    </template>
+                </dl>
+
+                <template lwc:if={detail.proofAvailable}>
+                    <lightning-button
+                        variant="brand-outline"
+                        label="Descargar comprobante"
+                        icon-name="utility:download"
+                        onclick={handleDownloadProof}
+                        disabled={proofLoading}
+                        class="full"
+                        stretch
+                    ></lightning-button>
+                    <template lwc:if={proofLoading}>
+                        <p class="message">Obteniendo comprobante…</p>
+                    </template>
+                    <template lwc:if={proofError}>
+                        <p class="message message_error" role="alert">{proofError}</p>
+                    </template>
+                </template>
+            </section>
+
+            <template lwc:if={rescheduleSuccess}>
+                <p class="message message_success" role="status">{rescheduleSuccess}</p>
+            </template>
+
+            <section class="card">
+                <h2 class="section-title">Reprogramar entrega</h2>
+                <template lwc:if={detail.canReschedule}>
+                    <form onsubmit={handleReschedule}>
+                        <p class="hint">{rescheduleRangeText}</p>
+                        <lightning-input
+                            data-id="newDate"
+                            type="date"
+                            label="Nueva fecha"
+                            required
+                            min={detail.minRescheduleDate}
+                            max={detail.maxRescheduleDate}
+                            value={newDate}
+                            onchange={handleDateChange}
+                            date-style="medium"
+                            message-when-range-underflow="La fecha es demasiado pronto."
+                            message-when-range-overflow="La fecha es demasiado tarde."
+                        ></lightning-input>
+                        <lightning-textarea
+                            label="Instrucciones de entrega"
+                            value={newInstructions}
+                            onchange={handleInstructionsChange}
+                            max-length="2000"
+                        ></lightning-textarea>
+                        <template lwc:if={rescheduleError}>
+                            <p class="message message_error" role="alert">{rescheduleError}</p>
+                        </template>
+                        <lightning-button
+                            variant="brand"
+                            type="submit"
+                            label="Guardar cambios"
+                            disabled={saveDisabled}
+                            class="full"
+                            stretch
+                        ></lightning-button>
+                    </form>
+                </template>
+                <template lwc:else>
+                    <p class="hint">{detail.rescheduleBlockedReason}</p>
+                </template>
+            </section>
+        </template>
+    </div>
+</template>

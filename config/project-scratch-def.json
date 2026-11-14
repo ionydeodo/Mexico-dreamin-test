@@ -1,0 +1,13 @@
+{
+  "orgName": "RutaCargo Rastreo",
+  "edition": "Developer",
+  "country": "MX",
+  "language": "en_US",
+  "features": ["Communities", "EnableSetPasswordInApi"],
+  "settings": {
+    "lightningExperienceSettings": { "enableS1DesktopEnabled": true },
+    "communitiesSettings": { "enableNetworksEnabled": true },
+    "experienceBundleSettings": { "enableExperienceBundleMetadata": true },
+    "mobileSettings": { "enableS1EncryptedStoragePref2": false }
+  }
+}
