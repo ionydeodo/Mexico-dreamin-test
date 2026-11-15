@@ -13,7 +13,9 @@ TS="${5:-$(TZ=America/Mexico_City date +%Y-%m-%dT%H:%M:%S%:z)}"
 BODY=$(node -e 'const [t,s,l,p,ts]=process.argv.slice(1);console.log(JSON.stringify({trackingNumber:t,status:s,location:l||null,timestamp:ts,proofId:p||null}))' \
   "$TRACKING" "$STATUS" "$LOCATION" "$PROOF" "$TS")
 echo "POST /services/apexrest/entregaya/v1/status  $BODY"
-printf '%s' "$BODY" > /tmp/entregaya-body.json
+BODY_FILE=$(mktemp)
+trap 'rm -f "$BODY_FILE"' EXIT
+printf '%s' "$BODY" > "$BODY_FILE"
 sf api request rest /services/apexrest/entregaya/v1/status --method POST \
-  --header "Content-Type:application/json" --body /tmp/entregaya-body.json "${@:6}"
+  --header "Content-Type:application/json" --body "@$BODY_FILE" "${@:6}"
 echo

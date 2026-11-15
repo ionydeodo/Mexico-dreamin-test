@@ -14,7 +14,7 @@ sf org create scratch --definition-file config/project-scratch-def.json --alias 
   --set-default --duration-days "$DAYS" --wait 15
 
 echo "==> Desplegando metadata"
-sf project deploy start --target-org "$ALIAS" --wait 30
+sf project deploy start --source-dir force-app --target-org "$ALIAS" --wait 30
 
 echo "==> Asignando permisos al administrador (agente + simulador de EntregaYa)"
 sf org assign permset --name RutaCargo_Agent --name RutaCargo_EntregaYa_Integration --target-org "$ALIAS"
@@ -36,9 +36,15 @@ for i in $(seq 1 30); do
 done
 sf apex run --file scripts/apex/assign-guest-permset.apex --target-org "$ALIAS" | grep -E 'USER_DEBUG|Error' || true
 
+echo "==> Configurando el sitio: componente en Home, acceso público, estado Live"
+sf project deploy start --source-dir site --ignore-conflicts --target-org "$ALIAS" --wait 30
+sf community publish --name "$SITE_NAME" --target-org "$ALIAS"
+
 echo "==> Ejecutando pruebas Apex"
 sf apex run test --target-org "$ALIAS" --test-level RunLocalTests --code-coverage --result-format human --wait 20
 
 echo
-echo "Listo. Pasos manuales pendientes: ver README.md, sección 'Pasos manuales'."
+echo "Listo. Sitio público:"
+sf data query --target-org "$ALIAS" --query "SELECT Domain.Domain FROM DomainSite WHERE PathPrefix = '/rastreo' LIMIT 1" 2>/dev/null | grep -oE '[a-z0-9.-]+\.site\.com' | sed 's#^#  https://#; s#$#/rastreo/#' || true
+echo "Pasos manuales pendientes: ver README.md, sección 'Pasos manuales'."
 sf org open --target-org "$ALIAS" --path "/lightning/o/Shipment__c/list" --url-only

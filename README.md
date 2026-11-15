@@ -29,21 +29,18 @@ sf org login web --set-default-dev-hub --alias DevHub   # una sola vez
 
 El script crea el org, despliega la metadata, asigna permisos, carga los 120 envíos de prueba,
 crea el sitio **Rastreo RutaCargo** (`/rastreo`, plantilla Build Your Own LWR), asigna el permission set
-al usuario invitado y corre las pruebas Apex con cobertura.
+al usuario invitado, coloca el componente en la Home, activa el acceso público, publica el sitio y corre
+las pruebas Apex con cobertura. La metadata del sitio vive en `site/` y se despliega después de crearlo.
 
 ## Pasos manuales
 
-Estos pasos no se pueden automatizar de forma confiable con metadata y quedan pendientes en el org:
+Estos pasos dependen de datos que no van en el repositorio (secretos del proveedor) y quedan pendientes:
 
-1. **Agregar el componente al sitio.** Setup → Digital Experiences → *Rastreo RutaCargo* → Builder.
-   En la página *Home* arrastra **RutaCargo - Rastreo de envíos**.
-2. **Acceso público.** En Builder → Settings → General, activa *Guest users can see and interact with
-   the site without logging in*. Luego **Publish**.
-3. **Credencial de EntregaYa.** Setup → Named Credentials:
+1. **Credencial de EntregaYa.** Setup → Named Credentials:
    - Named Credential *EntregaYa*: cambia la URL por la URL base del mock/ambiente de pruebas.
    - External Credential *EntregaYa* → principal *EntregaYaApi* → agrega el parámetro de autenticación
      `ApiKey` con la API key que entregó EntregaYa. **No la guardes en el repositorio.**
-4. **Usuario de integración de EntregaYa (OAuth 2.0 client credentials).**
+2. **Usuario de integración de EntregaYa (OAuth 2.0 client credentials).**
    - Crea un usuario de integración (licencia *Salesforce Integration*, perfil *Minimum Access - API Only
      Integrations*) y asígnale **RutaCargo - Integración EntregaYa**.
    - Crea una External Client App (o Connected App) con OAuth habilitado, flujo *Client Credentials*,

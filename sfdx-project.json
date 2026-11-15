@@ -1,5 +1,14 @@
 {
-  "packageDirectories": [{ "path": "force-app", "default": true }],
+  "packageDirectories": [
+    {
+      "path": "force-app",
+      "default": true
+    },
+    {
+      "path": "site",
+      "default": false
+    }
+  ],
   "name": "rutacargo-rastreo",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
