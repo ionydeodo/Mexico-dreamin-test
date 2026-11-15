@@ -36,10 +36,10 @@ las pruebas Apex con cobertura. La metadata del sitio vive en `site/` y se despl
 
 Estos pasos dependen de datos que no van en el repositorio (secretos del proveedor) y quedan pendientes:
 
-1. **Credencial de EntregaYa.** Setup → Named Credentials:
-   - Named Credential *EntregaYa*: cambia la URL por la URL base del mock/ambiente de pruebas.
-   - External Credential *EntregaYa* → principal *EntregaYaApi* → agrega el parámetro de autenticación
-     `ApiKey` con la API key que entregó EntregaYa. **No la guardes en el repositorio.**
+1. **Ambiente real de EntregaYa** (opcional; por defecto se usa el mock, ver abajo):
+   - Named Credential *EntregaYa*: cambia la URL por la URL base del proveedor.
+   - Guarda la API key real: `ENTREGAYA_API_KEY=<key> ./scripts/set-entregaya-api-key.sh rutacargo`.
+     **No la guardes en el repositorio.**
 2. **Usuario de integración de EntregaYa (OAuth 2.0 client credentials).**
    - Crea un usuario de integración (licencia *Salesforce Integration*, perfil *Minimum Access - API Only
      Integrations*) y asígnale **RutaCargo - Integración EntregaYa**.
@@ -71,6 +71,21 @@ Respuestas: `200 {"result":"updated"}`, `200 {"result":"ignored"}` (actualizaci�
 `404 TRACKING_NOT_FOUND`, `403 FORBIDDEN` si el usuario no es EntregaYa (RN-04).
 
 **Pruebas Apex:** `sf apex run test --test-level RunLocalTests --code-coverage --result-format human`
+
+## Mock de EntregaYa (comprobantes)
+
+La Named Credential *EntregaYa* apunta a un mock estático versionado en el repo: `mock/entregaya/proofs/<proofId>`
+contiene el JSON que documenta el proveedor (`proofId`, `trackingNumber`, `signedBy`, `fileName`, `pdfBase64`)
+para los 24 envíos Entregados del seed, y se sirve por jsDelivr fijado a un commit:
+`https://cdn.jsdelivr.net/gh/ionydeodo/mexico-dreamin-test@<commit>/mock/entregaya`.
+
+- Un comprobante inexistente responde 404, así que el sitio muestra "No pudimos obtener el comprobante…".
+- El mock **no valida la API key**. No se pudo hospedar dentro de Salesforce porque un Apex REST público
+  rechaza cualquier header `Authorization: Bearer` ajeno con 401 `INVALID_SESSION_ID`.
+- Para regenerarlo: `python3 scripts/mock/generate-entregaya-proofs.py delivered.csv` (instrucciones en el script),
+  hacer commit y actualizar el commit en la URL de la Named Credential.
+- El usuario invitado necesita lectura sobre *User External Credential* (ya incluida en
+  `RutaCargo_Guest_Site`): Salesforce la exige para cualquier callout con External Credential.
 
 ## Decisiones de diseño
 

@@ -19,6 +19,9 @@ sf project deploy start --source-dir force-app --target-org "$ALIAS" --wait 30
 echo "==> Asignando permisos al administrador (agente + simulador de EntregaYa)"
 sf org assign permset --name RutaCargo_Agent --name RutaCargo_EntregaYa_Integration --target-org "$ALIAS"
 
+echo "==> API key de EntregaYa (el mock no la valida; para el ambiente real exporta ENTREGAYA_API_KEY)"
+ENTREGAYA_API_KEY="${ENTREGAYA_API_KEY:-mock-no-valida-la-key}" ./scripts/set-entregaya-api-key.sh "$ALIAS"
+
 echo "==> Cargando datos de prueba"
 sf apex run --file scripts/apex/seed-data.apex --target-org "$ALIAS" | grep -E 'USER_DEBUG|Error|error' || true
 
